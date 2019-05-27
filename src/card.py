@@ -18,6 +18,7 @@ class Generate_card:
         self.card_gap_x = 4
         self.card_gap_y = 2
     
+
     #--- change url ---
     def switch_source(self,option='sentence'):
         if (option is 'sentence'):
@@ -28,6 +29,7 @@ class Generate_card:
         self.res = requests.get(url)
         self.soup = BeautifulSoup(self.res.content,features="html5lib")
     
+
     # ---- get an example sentence ---
     def get_sentence(self):
         self.switch_source()
@@ -38,6 +40,7 @@ class Generate_card:
         # swith aoup back to weblio
         self.switch_source(option='translation')
 
+
     # --- translation func ---
     def get_japanese(self):
         translation = self.soup.find("td", attrs={"class":"content-explanation"})
@@ -47,7 +50,20 @@ class Generate_card:
             self.japanese = oneJWord[0]
         except:
             print('get_japanese({}) failed'.format(self.word))
-    
+
+
+    # --- control the length of the Japanese translation ---
+    def restrict_japanese(self):
+        new_translation= input('new translation for {}: ')
+        
+        if len(new_translation) >= 16:
+            print('must be under 16 words....')
+            return self.restrict_japanese()
+        else:
+            self.japanese =  new_translation
+            print('done...')
+
+
      # --- toeic func ---
     def get_toeic(self):
         learningContent = self.soup.find_all("span", attrs={"class":"learning-level-content"})
@@ -58,6 +74,7 @@ class Generate_card:
             self.toeic =  int(toeic[0].replace('点以上の単語',""))
         except:
             print('get_toeic({}) failed'.format(self.word))
+
 
     # --- generate card frame and place words ---
     def set_frame(self,canvas,cordX,cordY,frame_option=1):
@@ -84,6 +101,10 @@ class Generate_card:
 
         # add Japanese
         self.get_japanese()
+
+        # if Japanese is too long... fix it manually
+        if (len(self.japanese >= 16)): self.restrict_japanese()
+        
         canvas.setFont('HeiseiMin-W3', 15)
         canvas.drawCentredString(half_x *mm, (half_y - 7.5) *mm, self.japanese)
 
@@ -104,6 +125,7 @@ class Generate_card:
     def calculate_card_pos_x(self,XX):
         return (self.paper_margin_x + (self.card_width + self.card_gap_x) * XX) 
     
+
     # --- calculate the init postion for the card
     def calculate_card_pos_y(self,YY):
         return (self.paper_margin_y + (self.card_height + self.card_gap_y) * YY)
