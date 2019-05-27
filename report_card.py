@@ -2,16 +2,13 @@ from src import *
 from src.card import Generate_card
 
 print('start...')
-canvas = canvas.Canvas("form.pdf")
+canvas = canvas.Canvas("card.pdf")
 pdfmetrics.registerFont(UnicodeCIDFont('HeiseiMin-W3'))
 
 listOfWrods = [
-    'flap','icy','ugliest',
-    'unknown','crowded','attack','ink','apple',
-    'participate','alien','process','ambition',
-    'flap','icy','ugliest','unknown',
-    'crowded','attack','ink','apple'
-    ]
+    'rumor','victims','self-esteem','bully',
+    'feelings','harassment','criminal charges','insult'
+]
     
 count = 0
 final_count = len(listOfWrods)
@@ -31,4 +28,4 @@ while (count < final_count):
 
 canvas.save()
 print('done...')
-os.system('open form.pdf')
+os.system('open card.pdf')
