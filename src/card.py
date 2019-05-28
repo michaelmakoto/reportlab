@@ -54,9 +54,9 @@ class Generate_card:
 
     # --- control the length of the Japanese translation ---
     def restrict_japanese(self):
-        new_translation= input('new translation for {}: ')
+        new_translation= input('new translation for {}:'.format(self.word))
         
-        if len(new_translation) >= 16:
+        if (len(new_translation) >= 16):
             print('must be under 16 words....')
             return self.restrict_japanese()
         else:
@@ -74,6 +74,10 @@ class Generate_card:
             self.toeic =  int(toeic[0].replace('点以上の単語',""))
         except:
             print('get_toeic({}) failed'.format(self.word))
+
+
+    def set_design_frame(self,canvas,cordX,cordY,color):
+        pass
 
 
     # --- generate card frame and place words ---
@@ -103,7 +107,7 @@ class Generate_card:
         self.get_japanese()
 
         # if Japanese is too long... fix it manually
-        if (len(self.japanese >= 16)): self.restrict_japanese()
+        if (len(self.japanese) >= 16): self.restrict_japanese()
         
         canvas.setFont('HeiseiMin-W3', 15)
         canvas.drawCentredString(half_x *mm, (half_y - 7.5) *mm, self.japanese)
