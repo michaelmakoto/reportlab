@@ -1,13 +1,13 @@
 from src import *
-from src.card import Generate_card
 
 print('start...')
 canvas = canvas.Canvas("card.pdf")
 pdfmetrics.registerFont(UnicodeCIDFont('HeiseiMin-W3'))
 
 listOfWrods = [
-    'rumor','victims','self-esteem','bully',
-    'feelings','harassment','criminal charges','insult'
+    'rumor','victims','self-esteem',
+    'feelings','harassment','criminal charges','insult',
+    'generate','adopt','please'
 ]
     
 count = 0
