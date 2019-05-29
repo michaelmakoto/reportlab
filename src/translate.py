@@ -10,10 +10,12 @@ class Translate:
         self.japanese = 'None'
         self.toeic = 0
         self.sentence = 'None'
+        self.part = '不明'
 
         self.get_toeic()
         self.get_japanese()
-        
+        self.get_part()
+
         if (len(self.japanese) >= 16): 
             self.restrict_japanese()
 
@@ -62,7 +64,7 @@ class Translate:
             print('done...')
 
 
-        # --- toeic func ---
+    # --- toeic func ---
     def get_toeic(self):
         learningContent = self.soup.find_all("span", attrs={"class":"learning-level-content"})
         try:
@@ -72,3 +74,12 @@ class Translate:
             self.toeic =  int(toeic[0].replace('点以上の単語',""))
         except:
             print('get_toeic({}) failed'.format(self.word))
+
+
+    # --- get 品詞 ---
+    def get_part(self):
+        part = self.soup.find("div", attrs={"class","KnenjSub"})
+        try:
+            self.part = part.get_text().split(' ')[0]
+        except:
+            print('get_part({}) failed'.format(self.word))
