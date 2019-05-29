@@ -8,7 +8,7 @@ pdfmetrics.registerFont(UnicodeCIDFont('HeiseiMin-W3'))
 listOfWrods = [
     'interlocking','duplex',
     'Commission','commercial','irritating','radiation',
-    'electromagnetic ','cancer','sequence','infer'
+    'electromagnetic','cancer','sequence','infer'
 ]
     
 count = 0
@@ -17,7 +17,7 @@ final_count = len(listOfWrods)
 while (count < final_count):
     for x,y in itertools.product(range(2),range(5)):
         try:
-            word = listOfWrods[count]
+            word = listOfWrods[count].rstrip().lower()
             print(count,word)
 
             card = Card(word)
@@ -26,6 +26,8 @@ while (count < final_count):
 
             count += 1
         except IndexError:
+            break
+        except:
             break
     print('finished one page')
     canvas.showPage()
