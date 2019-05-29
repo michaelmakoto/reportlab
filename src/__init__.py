@@ -12,5 +12,3 @@ import re
 import sys,os
 import itertools
 from PIL import Image
-
-from src.card import Generate_card
