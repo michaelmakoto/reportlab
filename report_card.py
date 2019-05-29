@@ -1,6 +1,6 @@
 from src import *
 from src.card import Card
-from src.translate import Translate
+
 
 print('start...')
 canvas = canvas.Canvas("card.pdf")
