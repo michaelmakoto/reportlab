@@ -8,7 +8,7 @@ class Translate:
         self.soup = BeautifulSoup(self.res.content,features="html5lib")
 
         self.japanese = 'None'
-        self.toeic = 0
+        self.toeic = '---'
         self.sentence = 'None'
         self.part = '不明'
 
