@@ -1,11 +1,13 @@
 from src import *
+from src.card import Card
+from src.translate import Translate
 
 print('start...')
 canvas = canvas.Canvas("card.pdf")
 pdfmetrics.registerFont(UnicodeCIDFont('HeiseiMin-W3'))
 
 listOfWrods = [
-    'rumor','victims','self-esteem',
+    'rumor','self-esteem',
     'feelings','harassment','criminal charges','insult',
     'generate','adopt','please'
 ]
@@ -18,8 +20,10 @@ while (count < final_count):
         try:
             word = listOfWrods[count]
             print(count,word)
-            cards = Generate_card(word)
-            cards.set_frame(canvas,x,y)
+
+            card = Card(word)
+            card.set_frame(canvas,x,y)
+
             count += 1
         except IndexError:
             break
