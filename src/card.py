@@ -72,13 +72,13 @@ class Card:
 
     def set_color(self):
         toeic = self.toeic
-        if 0 <= toeic and toeic < 300:
+        if 0 <= toeic and toeic <= 300:
             selector = 0
-        elif 301 <= toeic and toeic < 500:
+        elif 301 <= toeic and toeic <= 500:
             selector = 1
-        elif 501 <= toeic and toeic < 600:
+        elif 501 <= toeic and toeic <= 600:
             selector = 2
-        elif 601 <= toeic and toeic < 799:
+        elif 601 <= toeic and toeic <= 799:
             selector = 3
         elif 800 <= toeic and toeic <= 990:
             selector = 4
