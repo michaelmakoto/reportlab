@@ -6,9 +6,9 @@ canvas = canvas.Canvas("card.pdf")
 pdfmetrics.registerFont(UnicodeCIDFont('HeiseiMin-W3'))
 
 listOfWrods = [
-    'rumor','self',
-    'feeling','harassment','rumor','self',
-    'feeling','harassment'
+    'interlocking','duplex',
+    'Commission','commercial','irritating','radiation',
+    'electromagnetic ','cancer','sequence','infer'
 ]
     
 count = 0
@@ -21,9 +21,8 @@ while (count < final_count):
             print(count,word)
 
             card = Card(word)
-
-            card.set_backgroud(canvas,x,y,2,1)
-            card.set_main_frame(canvas,x,y)
+            card.set_backgroud(canvas,x,y)
+            card.set_main_frame(canvas,x,y,0)
 
             count += 1
         except IndexError:
