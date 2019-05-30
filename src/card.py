@@ -1,5 +1,5 @@
 from src import *
-from src.translate import Translate
+# from src.translate import Translate
 
 class Card:
     def __init__(self,word):
@@ -11,11 +11,17 @@ class Card:
         self.card_gap_y = 2
         
         # get word translation data from Translate class
-        self.translation =  Translate(word)
+        # self.translation =  Translate(word)
         self.word = word
-        self.japanese = self.translation.japanese
-        self.toeic = self.translation.toeic
-        self.part = self.translation.part
+
+        self.japanese = 'None'
+        self.toeic = 0
+        self.sentence = 'None'
+        self.part = '不明'
+
+        # self.japanese = self.translation.japanese
+        # self.toeic = self.translation.toeic
+        # self.part = self.translation.part
 
         # card settings
         # rgb = [green,beige,yellow,orange,purpole]
@@ -61,7 +67,14 @@ class Card:
         canvas.setFillColor(white)
         # add toeic score
         canvas.setFont('Times-Bold', 14)
-        canvas.drawString((posX + 77.7) *mm, (posY + self.card_height - 52.1) *mm, str(self.toeic))
+
+        # if the toeic score is 0, print --- instead
+        if self.toeic == 0: 
+            toeic = '---'
+        else:
+            toeic = str(self.toeic)
+
+        canvas.drawString((posX + 77.7) *mm, (posY + self.card_height - 52.1) *mm, toeic)
 
         # add part
         canvas.setFont('HeiseiMin-W3', 12)
@@ -72,7 +85,7 @@ class Card:
 
     def set_color(self):
         try:
-            toeic = int(self.toeic)
+            toeic = self.toeic
             if 0 <= toeic and toeic <= 300:
                 selector = 0
             elif 301 <= toeic and toeic <= 500:
