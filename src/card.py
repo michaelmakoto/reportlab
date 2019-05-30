@@ -26,7 +26,9 @@ class Card:
         # card settings
         # rgb = [green,beige,yellow,orange,purpole]
         self.color_set = [[133,202,171], [256,198,176], [252, 209, 112], [251, 75, 61], [70, 10, 62]]
-        
+        # depending on the color
+        self.toeic_range = 'None'
+
         # defult color
         self.color = [0,0,0]
         self.r = 2.5
@@ -88,16 +90,27 @@ class Card:
             toeic = self.toeic
             if 0 <= toeic and toeic <= 300:
                 selector = 0
+                self.toeic_range = '0-300'
+
             elif 301 <= toeic and toeic <= 500:
                 selector = 1
+                self.toeic_range = '301-500'
+
             elif 501 <= toeic and toeic <= 600:
                 selector = 2
-            elif 601 <= toeic and toeic <= 799:
+                self.toeic_range = '501-600'
+
+            elif 601 <= toeic and toeic <= 800:
                 selector = 3
-            elif 800 <= toeic and toeic <= 990:
+                self.toeic_range = '601-800'
+
+            elif 801 <= toeic and toeic <= 990:
                 selector = 4
+                self.toeic_range = '801-990'
+
         except:
             selector = 0
+            self.toeic_range = 'None'
 
         try:
             r = self.color_set[selector][0] / 255
@@ -105,6 +118,7 @@ class Card:
             b = self.color_set[selector][2] / 255
             self.color = [r,g,b]
             print('set_color({}) is {}'.format(self.word, str(selector)))
+            self.selector = selector
         except:
             print('set_color({}) failed'.format(self.word))
 
