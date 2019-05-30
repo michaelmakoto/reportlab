@@ -15,3 +15,4 @@ import itertools
 from PIL import Image
 
 import time
+from collections import Counter

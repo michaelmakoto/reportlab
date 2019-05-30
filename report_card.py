@@ -22,6 +22,7 @@ def set_up_card(word):
     
     return c
 
+
 #--- main ---
 start = time.time()
 
@@ -41,6 +42,8 @@ cards = [set_up_card(l) for l in listOfWrods]
 
 print('\nstart printing...')
 while (index < final_index):
+    # apply card to the right grid address on paper
+    # [0,0] -> [1,4] from bottom left to top right
     for x,y in itertools.product(range(2),range(5)):
         try:
             print(index,cards[index].word)
@@ -52,11 +55,17 @@ while (index < final_index):
         except:
             break
     print('finished one page')
+    # break and add new page
     canvas.showPage()
 
 canvas.save()
 print('done...')
 end = time.time()
 print('time: {}[sec]'.format(end - start))
+
+# check toeic leve by range
+all_toeic = [c.toeic_range for c in cards]
+counter = Counter(all_toeic)
+print(counter)
 
 os.system('open card.pdf')
