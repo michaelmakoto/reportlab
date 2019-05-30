@@ -2,22 +2,22 @@ from src import *
 
 class Translate:
     def __init__(self,word):
-        self.word = word
+        self.word = str(word).rstrip().lower()
         self.url = 'https://ejje.weblio.jp/content/' + word
         self.res = requests.get(self.url)
         self.soup = BeautifulSoup(self.res.content,features="html5lib")
 
         self.japanese = 'None'
-        self.toeic = '---'
+        self.toeic = 0
         self.sentence = 'None'
         self.part = '不明'
 
-        self.get_toeic()
-        self.get_japanese()
-        self.get_part()
+        # self.get_toeic()
+        # self.get_japanese()
+        # self.get_part()
 
-        if (len(self.japanese) >= 16): 
-            self.restrict_japanese()
+        # if (len(self.japanese) >= 16): 
+        #     self.restrict_japanese()
 
     #--- change url ---
     def switch_source(self,option='sentence'):
