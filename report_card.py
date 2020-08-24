@@ -19,7 +19,7 @@ def set_up_card(word):
     c.japanese = t.japanese
     c.toeic = t.toeic
     c.part = t.part
-    
+
     return c
 
 
@@ -30,15 +30,14 @@ print('start...')
 canvas = canvas.Canvas("card.pdf")
 pdfmetrics.registerFont(UnicodeCIDFont('HeiseiMin-W3'))
 
-listOfWrods = [
+listOfWords = [
     'Commission','commercial','irritating','radiation',
     'electromagnetic','cancer','sequence','infer'
-    
 ]
-    
+
 index = 0
-final_index = len(listOfWrods)
-cards = [set_up_card(l) for l in listOfWrods]
+final_index = len(listOfWords)
+cards = [set_up_card(l.lower()) for l in listOfWords]
 
 print('\nstart printing...')
 while (index < final_index):
@@ -68,4 +67,4 @@ all_toeic = [c.toeic_range for c in cards]
 counter = Counter(all_toeic)
 print(counter)
 
-os.system('open card.pdf')
+# os.system('open card.pdf')
