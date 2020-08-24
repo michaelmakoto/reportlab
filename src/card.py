@@ -5,11 +5,16 @@ class Card:
     def __init__(self,word):
         self.card_width = 91
         self.card_height = 55
-        self.paper_margin_x = 12
-        self.paper_margin_y = 7
-        self.card_gap_x = 4
-        self.card_gap_y = 2
-        
+        # self.paper_margin_x = 12
+        # self.paper_margin_y = 7
+        # self.card_gap_x = 4
+        # self.card_gap_y = 2
+
+        self.paper_margin_x = 0
+        self.paper_margin_y = 0
+        self.card_gap_x = 0
+        self.card_gap_y = 0
+
         # get word translation data from Translate class
         # self.translation =  Translate(word)
         self.word = word
@@ -56,7 +61,7 @@ class Card:
         # add English
         canvas.setFont('Times-Bold', 20)
         canvas.drawCentredString(half_x *mm, (half_y + 7.5) *mm, self.word)
-        
+
         # add japanese
         canvas.setFont('HeiseiMin-W3', 15)
         canvas.drawCentredString(half_x *mm, (half_y - 7.5) *mm, self.japanese)
@@ -71,7 +76,7 @@ class Card:
         canvas.setFont('Times-Bold', 14)
 
         # if the toeic score is 0, print --- instead
-        if self.toeic == 0: 
+        if self.toeic == 0:
             toeic = '---'
         else:
             toeic = str(self.toeic)
