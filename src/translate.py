@@ -5,7 +5,7 @@ class Translate:
         self.word = str(word).rstrip().lower()
         self.url = 'https://ejje.weblio.jp/content/' + word
         self.res = requests.get(self.url)
-        self.soup = BeautifulSoup(self.res.content,features="html5lib")
+        self.soup = BeautifulSoup(self.res.content,features="html.parser")
 
         self.japanese = 'None'
         self.toeic = 0
@@ -27,7 +27,7 @@ class Translate:
             url = 'https://ejje.weblio.jp/content/' + self.word
             
         self.res = requests.get(url)
-        self.soup = BeautifulSoup(self.res.content,features="html5lib")
+        self.soup = BeautifulSoup(self.res.content,features="html.parser")
 
 
     # ---- get an example sentence ---
