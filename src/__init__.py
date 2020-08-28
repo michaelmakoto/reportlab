@@ -10,7 +10,7 @@ from reportlab.lib.colors import Color,blue,white,red,black
 from bs4 import BeautifulSoup
 import requests
 import re
-import sys,os
+import sys,os,subprocess
 import itertools
 from PIL import Image
 

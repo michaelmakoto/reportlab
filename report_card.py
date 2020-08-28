@@ -22,7 +22,6 @@ def set_up_card(word):
 
     return c
 
-
 #--- main ---
 start = time.time()
 
@@ -31,8 +30,8 @@ canvas = canvas.Canvas("card.pdf")
 pdfmetrics.registerFont(UnicodeCIDFont('HeiseiMin-W3'))
 
 listOfWords = [
-    'Commission','commercial','irritating','radiation',
-    'electromagnetic','cancer','sequence','infer'
+    'Commission','commercial','acquainted','entertain',
+    'committee','perspective'
 ]
 
 index = 0
@@ -67,4 +66,8 @@ all_toeic = [c.toeic_range for c in cards]
 counter = Counter(all_toeic)
 print(counter)
 
+# for mac
 # os.system('open card.pdf')
+
+# for windows
+

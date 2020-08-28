@@ -5,15 +5,15 @@ class Card:
     def __init__(self,word):
         self.card_width = 91
         self.card_height = 55
-        # self.paper_margin_x = 12
-        # self.paper_margin_y = 7
-        # self.card_gap_x = 4
-        # self.card_gap_y = 2
+        self.paper_margin_x = 12
+        self.paper_margin_y = 7
+        self.card_gap_x = 4
+        self.card_gap_y = 2
 
-        self.paper_margin_x = 0
-        self.paper_margin_y = 0
-        self.card_gap_x = 0
-        self.card_gap_y = 0
+        # self.paper_margin_x = 0
+        # self.paper_margin_y = 0
+        # self.card_gap_x = 0
+        # self.card_gap_y = 0
 
         # get word translation data from Translate class
         # self.translation =  Translate(word)
